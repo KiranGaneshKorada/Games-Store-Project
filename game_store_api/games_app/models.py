@@ -6,3 +6,4 @@ class Game(models.Model):
     description=models.TextField()
     released=models.DateField()
     background_image=models.ImageField(upload_to="games_bg_images")
+    website=models.CharField()
