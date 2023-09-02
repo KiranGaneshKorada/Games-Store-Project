@@ -1,19 +1,20 @@
 import useGames from "../hooks/useGames";
-
+import GameCard from "./GameCard";
 
 function GamesGrid() {
-  
-const {games,error}=useGames();
- 
+  const { games, error } = useGames();
 
   return (
     <>
       {error && <h1>{error}</h1>}
-      <ul>
-        {games.map((game) => (
-          <li key={game.id}>{game.name}</li>
-        ))}
-      </ul>
+
+        <div className="row mx-2 my-2">
+      {games.map((game) => (
+          <div className="col-sm-3 my-2  ">
+            <GameCard key={game.id} game={game} />
+          </div>
+            ))}
+        </div>
     </>
   );
 }
