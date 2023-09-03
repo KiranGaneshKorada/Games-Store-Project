@@ -1,4 +1,5 @@
 import { Game } from "../hooks/useGames";
+import imageResize from "../services/image-resize";
 import IconPlatform from "./IconPlatform";
 
 
@@ -10,12 +11,12 @@ function GameCard({ game }: Props) {
   return (
     <div className="card">
       <img
-        src={game.background_image}
+        src={imageResize(game.background_image)}
         className="card-img-top "
         alt={game.name}
       />
       <div className="card-body bg-secondary bg-opacity-75">
-        <h5 className="card-title mb-2">{game.name}</h5>
+        <h6 className="card-title ">{game.name}</h6>
         <IconPlatform platforms={game.parent_platforms} />
       </div>
     </div>
