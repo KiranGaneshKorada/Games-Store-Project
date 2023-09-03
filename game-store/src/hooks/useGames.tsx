@@ -1,6 +1,4 @@
-import { CanceledError } from "axios";
-import clientApi from "../services/client-api";
-import { useState, useEffect } from "react";
+import useGenericData from "./useGenericData";
 
 
 export interface platform{
@@ -17,29 +15,13 @@ export interface Game {
   parent_platforms:{platform:platform}[]
 }
 
-interface ListOfGames {
-  count: number;
-  results: Game[];
-}
+
 
 function useGames() {
-  const [games, setGames] = useState<Game[]>([]);
-  const [error, setError] = useState("");
 
-  useEffect(() => {
-    const controller = new AbortController();
+  const { data, error } = useGenericData<Game>("/games");
 
-    clientApi
-      .get<ListOfGames>("/games", { signal: controller.signal })
-      .then((res) => {
-        setGames(res.data.results), setError("");
-      })
-      .catch((error) => {
-        if(error instanceof CanceledError) return;
-        setError(error.message);
-      });
-    return () => controller.abort();
-  }, []);
+  const games=data
 
   return { games, error };
 }
