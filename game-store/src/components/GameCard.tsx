@@ -9,10 +9,10 @@ interface Props {
 
 function GameCard({ game }: Props) {
   return (
-    <div className="card">
+    <div className="card ">
       <img
         src={imageResize(game.background_image)}
-        className="card-img-top "
+        className="card-img-top  "
         alt={game.name}
       />
       <div className="card-body bg-secondary bg-opacity-75">
