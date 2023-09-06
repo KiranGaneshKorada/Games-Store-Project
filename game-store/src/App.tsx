@@ -1,6 +1,7 @@
-import Mainbar from "./components/Mainbar";
+import MainComponent from "./components/MainComponent";
 import Navbar from "./components/Navbar";
-import Sidebar from "./components/Sidebar";
+
+
 
 function MainApp() {
   return (
@@ -10,8 +11,7 @@ function MainApp() {
           <Navbar />
         </div>
         <div className="row my-0 mx-0 py-0 px-0">
-          <Sidebar />
-          <Mainbar />
+         <MainComponent/>
         </div>
       </div>
     </>

@@ -1,8 +1,13 @@
 import useGames from "../hooks/useGames";
+import { Genre } from "../hooks/useGenres";
 import GameCard from "./GameCard";
 
-function GamesGrid() {
-  const { games, error } = useGames();
+interface Props {
+  genre: Genre|null;
+}
+
+function GamesGrid({genre}:Props) {
+  const { games, error } = useGames(genre);
 
   return (
     <>
@@ -10,7 +15,7 @@ function GamesGrid() {
 
         <div className="row mx-2 my-2">
       {games.map((game) => (
-          <div className="col-sm-3 my-2  ">
+          <div className="col-sm-3 my-2  "key={game.id}>
             <GameCard key={game.id} game={game} />
           </div>
             ))}

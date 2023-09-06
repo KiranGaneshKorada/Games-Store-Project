@@ -12,9 +12,10 @@ import { BsGlobe } from "react-icons/bs";
 
 interface Props {
   slug: string;
+  id:number
 }
 
-function IconParagraph({ slug }: Props) {
+function IconParagraph({ slug,id }: Props) {
   //     const iconPlatformMap: { [key: string]: IconType } = {
   //     pc: FaWindows,
   //     playstation: FaPlaystation,
@@ -28,15 +29,19 @@ function IconParagraph({ slug }: Props) {
   //   };
 
 
-  if (slug === "pc") return <FaWindows />;
-  if (slug === "playstation") return <FaPlaystation />;
-  if (slug === "xbox") return <FaXbox />;
-  if (slug === "nintendo") return <SiNintendo />;
-  if (slug === "mac") return <FaApple />;
-  if (slug === "linux") return <FaLinux />;
-  if (slug === "ios") return <MdPhoneIphone />;
-  if (slug === "web") return <BsGlobe />;
-  if (slug === "android") return <FaAndroid />;
+  if (slug === "pc") return (
+    <span>
+      <FaWindows />
+    </span>
+  );
+  if (slug === "playstation") return <span key={id}><FaPlaystation /></span>;
+  if (slug === "xbox") return <span key={id}><FaXbox /></span>;
+  if (slug === "nintendo") return <span key={id}><SiNintendo /></span>;
+  if (slug === "mac") return <span key={id}><FaApple /></span>;
+  if (slug === "linux") return <span key={id}><FaLinux /></span>;
+  if (slug === "ios") return <span key={id}><MdPhoneIphone /></span>;
+  if (slug === "web") return <span key={id}><BsGlobe /></span>;
+  if (slug === "android") return <span key={id}><FaAndroid /></span>;
 
 }
 

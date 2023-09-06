@@ -14,7 +14,12 @@ function IconPlatform({ platforms }: Props) {
       {" "}
       <div className="d-flex justify-content-evenly ">
         {platforms.map((platform) => (
-          <IconParagraph slug={platform.platform.slug} />
+          <span key={platform.platform.id}>
+            <IconParagraph
+              slug={platform.platform.slug}
+              id={platform.platform.id}
+            />
+          </span>
         ))}
       </div>
     </>
