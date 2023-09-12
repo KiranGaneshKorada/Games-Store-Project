@@ -9,8 +9,11 @@ function MainComponent() {
 
   return (
     <>
-      <Sidebar onHandlingClick={(genre)=>setSelectedGenre(genre)} />
-      <Mainbar genre={selectedGenre}/>
+      <Sidebar
+        onHandlingClick={(genre) => setSelectedGenre(genre)}
+        genreProp={selectedGenre}
+      />
+      <Mainbar genre={selectedGenre} />
     </>
   );
 }
