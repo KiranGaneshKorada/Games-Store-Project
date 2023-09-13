@@ -1,13 +1,15 @@
 import useGames from "../hooks/useGames";
 import { Genre } from "../hooks/useGenres";
+import { Platform } from "../hooks/usePlatforms";
 import GameCard from "./GameCard";
 
 interface Props {
   genre: Genre|null;
+  platform:Platform|null
 }
 
-function GamesGrid({genre}:Props) {
-  const { games, error } = useGames(genre);
+function GamesGrid({genre,platform}:Props) {
+  const { games, error } = useGames(genre,platform);
 
   return (
     <>

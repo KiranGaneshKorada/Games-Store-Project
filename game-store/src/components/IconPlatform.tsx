@@ -1,9 +1,10 @@
-import { platform } from "../hooks/useGames";
 
+
+import { Platform } from "../hooks/usePlatforms";
 import IconParagraph from "./IconParagraph";
 
 interface Props {
-  platforms: { platform: platform }[];
+  platforms: { platform: Platform }[];
 }
 
 function IconPlatform({ platforms }: Props) {

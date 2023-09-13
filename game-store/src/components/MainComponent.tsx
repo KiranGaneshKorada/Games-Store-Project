@@ -6,6 +6,7 @@ import { Genre } from "../hooks/useGenres";
 function MainComponent() {
 
     const [selectedGenre,setSelectedGenre]=useState<Genre | null>(null)
+    
 
   return (
     <>
@@ -13,7 +14,7 @@ function MainComponent() {
         onHandlingClick={(genre) => setSelectedGenre(genre)}
         genreProp={selectedGenre}
       />
-      <Mainbar genre={selectedGenre} />
+      <Mainbar genre={selectedGenre}  />
     </>
   );
 }

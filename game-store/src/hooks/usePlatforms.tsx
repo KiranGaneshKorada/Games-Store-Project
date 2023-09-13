@@ -1,6 +1,6 @@
 import useGenericData from "./useGenericData";
 
-export interface platform {
+export interface Platform {
   id: number;
   name: string;
   slug: string;
@@ -8,7 +8,7 @@ export interface platform {
 
 
 function usePlatforms() {
-  const { data, error } = useGenericData<platform>("/platforms/lists/parents");
+  const { data, error } = useGenericData<Platform>("/platforms/lists/parents");
 
   const platforms = data;
 

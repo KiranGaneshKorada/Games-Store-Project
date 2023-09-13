@@ -1,20 +1,19 @@
 import useGenericData from "./useGenericData";
 import { Genre } from "./useGenres";
-import { platform } from "./usePlatforms";
-
+import { Platform } from "./usePlatforms";
 
 export interface Game {
   id: number;
   name: string;
   background_image: string;
-  parent_platforms: { platform: platform }[];
+  parent_platforms: { platform: Platform }[];
 }
 
-function useGames(genre: Genre | null) {
+function useGames(genre: Genre | null, platform: Platform | null) {
   const { data, error } = useGenericData<Game>(
     "/games",
-    { params: { genres: genre?.id } },
-    [genre?.id]
+    { params: { genres: genre?.id, parent_platforms: platform?.id } },
+    [genre?.id, platform?.id]
   );
 
   const games = data;
