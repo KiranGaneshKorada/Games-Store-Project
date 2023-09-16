@@ -9,11 +9,11 @@ export interface Game {
   parent_platforms: { platform: Platform }[];
 }
 
-function useGames(genre: Genre | null, platform: Platform | null) {
+function useGames(genre: Genre | null, platform: Platform | null,ordering:string) {
   const { data, error } = useGenericData<Game>(
     "/games",
-    { params: { genres: genre?.id, parent_platforms: platform?.id } },
-    [genre?.id, platform?.id]
+    { params: { genres: genre?.id, parent_platforms: platform?.id ,ordering:ordering} },
+    [genre?.id, platform?.id,ordering]
   );
 
   const games = data;

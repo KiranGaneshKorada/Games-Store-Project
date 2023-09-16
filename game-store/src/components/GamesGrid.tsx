@@ -6,10 +6,11 @@ import GameCard from "./GameCard";
 interface Props {
   genre: Genre|null;
   platform:Platform|null
+  ordering:string
 }
 
-function GamesGrid({genre,platform}:Props) {
-  const { games, error } = useGames(genre,platform);
+function GamesGrid({genre,platform,ordering}:Props) {
+  const { games, error } = useGames(genre,platform,ordering);
 
   return (
     <>
