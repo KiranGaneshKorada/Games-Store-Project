@@ -3,7 +3,11 @@ import Mainbar from "./Mainbar";
 import Sidebar from "./Sidebar";
 import { Genre } from "../hooks/useGenres";
 
-function MainComponent() {
+interface Props{
+  searchData:string
+}
+
+function MainComponent({searchData}:Props) {
 
     const [selectedGenre,setSelectedGenre]=useState<Genre | null>(null)
     
@@ -14,7 +18,7 @@ function MainComponent() {
         onHandlingClick={(genre) => setSelectedGenre(genre)}
         genreProp={selectedGenre}
       />
-      <Mainbar genre={selectedGenre}  />
+      <Mainbar genre={selectedGenre} searchData={searchData} />
     </>
   );
 }

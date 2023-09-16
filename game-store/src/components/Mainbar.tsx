@@ -5,11 +5,13 @@ import PlatformDropDown from "./PlatformDropDown";
 import { Platform } from "../hooks/usePlatforms";
 import OrderByDropdown from "./OrderByDropdown";
 
-interface Props{
-  genre:Genre|null
+
+interface Props {
+  genre: Genre | null;
+  searchData: string;
 }
 
-function Mainbar({genre}:Props) {
+function Mainbar({genre,searchData}:Props) {
 
   const [selectedPlatform,setSelectedPlatform]=useState<Platform|null>(null)
   const [selectedOrder, setSelectedOrder] = useState<string>('');
@@ -38,6 +40,7 @@ function Mainbar({genre}:Props) {
           genre={genre}
           platform={selectedPlatform}
           ordering={selectedOrder}
+          searchData={searchData}
         />
       </div>
     </>
