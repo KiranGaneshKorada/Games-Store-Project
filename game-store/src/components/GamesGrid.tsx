@@ -1,7 +1,9 @@
+import { Button } from "react-bootstrap";
 import useGames from "../hooks/useGames";
 import { Genre } from "../hooks/useGenres";
 import { Platform } from "../hooks/usePlatforms";
 import GameCard from "./GameCard";
+import { useState } from "react";
 
 interface Props {
   genre: Genre | null;
@@ -11,19 +13,30 @@ interface Props {
 }
 
 function GamesGrid({ genre, platform, ordering, searchData }: Props) {
-  const { games, error } = useGames(genre, platform, ordering, searchData);
+  const [pageNo,setPageNo]=useState(1)
+  const { games, error } = useGames(pageNo,8,genre, platform, ordering, searchData);
+
+  console.log(games?.count)
+  console.log(games?.next);
+  console.log(games?.previous);
 
   return (
     <>
       {error && <h1>{error.message}</h1>}
 
-      <div className="row mx-2 my-2">
+      <div className="row mx-2 my-2 ">
         {games?.results.map((game) => (
           <div className="col-sm-3 my-2  " key={game.id}>
             <GameCard key={game.id} game={game} />
           </div>
         ))}
       </div>
+      <Button disabled={!games?.next} onClick={()=>setPageNo(pageNo+1)} className="mx-2 my-4">
+        next
+      </Button>
+      <Button disabled={!games?.previous} onClick={()=>setPageNo(pageNo-1)} className="mx-2 my-4">
+        prev
+      </Button>
     </>
   );
 }

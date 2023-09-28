@@ -25,7 +25,7 @@ function PlatformDropDown({ onHandlingClick }: Props) {
           {showPlatform}
         </button>
 
-        <ul className="dropdown-menu">
+        <ul className="dropdown-menu dropdown-menu-platform">
           {platforms?.results.map((platform) => (
             <li key={platform.id}>
               <button

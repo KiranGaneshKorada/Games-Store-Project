@@ -10,7 +10,7 @@ function GenreGrid({onHandlingClick,genreProp}:Props) {
   const { genres, error } = useGenres();
 
   return (
-    <div className="py-5 px-3 ">
+    <div className="py-5 px-3 box-genres ">
       {error && <h1>{error.message}</h1>}
       {genres?.results.map((genre) => (
         <button

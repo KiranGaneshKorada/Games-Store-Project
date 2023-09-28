@@ -2,6 +2,9 @@ import axios, { AxiosRequestConfig } from "axios";
 
 
 export interface ListOfData<Generic> {
+  count:number
+  next:string
+  previous:string
   results: Generic[];
 }
 

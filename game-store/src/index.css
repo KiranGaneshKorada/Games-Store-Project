@@ -1,4 +1,11 @@
-.dropdown-menu {
+.dropdown-menu-platform {
   height: 250px;
+  overflow-y: scroll;
+}
+
+
+
+.box-genres {
+  height: 850px;
   overflow-y: scroll;
 }

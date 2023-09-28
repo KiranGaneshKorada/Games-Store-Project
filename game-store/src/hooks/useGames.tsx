@@ -13,14 +13,16 @@ export interface Game {
 
 const apiObject = new ClientApi<Game>("games");
 
-function useGames(genre: Genre | null, platform: Platform | null,ordering:string,searchData:string) {
+function useGames(pageNo:number,page_size:number,genre: Genre | null, platform: Platform | null,ordering:string,searchData:string) {
 
 
 
   const { data: games, error } = useQuery<ListOfData<Game>, Error>({
-    queryKey: ["games",genre,platform,ordering,searchData],
+    queryKey: ["games",pageNo,page_size,genre,platform,ordering,searchData],
     queryFn: ()=>apiObject.getData({
       params: {
+        page:pageNo,
+        page_size:page_size,
         genres: genre?.id,
         parent_platforms: platform?.id,
         ordering: ordering,
