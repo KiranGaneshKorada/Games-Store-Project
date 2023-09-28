@@ -1,5 +1,4 @@
-import clientApi from "../services/client-api";
-import useGenericData, { ListOfData } from "./useGenericData";
+import ClientApi, { ListOfData } from "../services/client-api";
 import { useQuery } from "@tanstack/react-query";
 
 
@@ -12,6 +11,8 @@ export interface Genre {
   image_background:string;
 }
 
+const apiObject=new ClientApi<Genre>('genres')
+
 
 
 function useGenres() {
@@ -20,7 +21,7 @@ function useGenres() {
 
      const { data: genres, error,isLoading } = useQuery<ListOfData<Genre>, Error>({
        queryKey: ["genres"],
-       queryFn: () => clientApi.get<ListOfData<Genre>>("/genres").then((res)=>res.data)
+       queryFn: apiObject.getData
      });
   
 

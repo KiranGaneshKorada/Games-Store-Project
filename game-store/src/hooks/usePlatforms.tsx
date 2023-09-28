@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import useGenericData, { ListOfData } from "./useGenericData";
-import clientApi from "../services/client-api";
+import ClientApi, { ListOfData } from "../services/client-api";
 
 export interface Platform {
   id: number;
@@ -8,14 +7,13 @@ export interface Platform {
   slug: string;
 }
 
+const apiObject = new ClientApi<Platform>("/platforms/lists/parents");
+
 
 function usePlatforms() {
   const { data: platforms, error,isLoading } = useQuery<ListOfData<Platform>, Error>({
     queryKey: ["platforms"],
-    queryFn: () =>
-      clientApi
-        .get<ListOfData<Platform>>("/platforms/lists/parents")
-        .then((res) => res.data),
+    queryFn: apiObject.getData
   });
 
 
