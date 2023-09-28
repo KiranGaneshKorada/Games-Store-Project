@@ -15,10 +15,10 @@ function GamesGrid({ genre, platform, ordering, searchData }: Props) {
 
   return (
     <>
-      {error && <h1>{error}</h1>}
+      {error && <h1>{error.message}</h1>}
 
       <div className="row mx-2 my-2">
-        {games.map((game) => (
+        {games?.results.map((game) => (
           <div className="col-sm-3 my-2  " key={game.id}>
             <GameCard key={game.id} game={game} />
           </div>

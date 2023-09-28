@@ -1,4 +1,7 @@
-import useGenericData from "./useGenericData";
+import clientApi from "../services/client-api";
+import useGenericData, { ListOfData } from "./useGenericData";
+import { useQuery } from "@tanstack/react-query";
+
 
 
 export interface Genre {
@@ -13,11 +16,15 @@ export interface Genre {
 
 function useGenres() {
 
-    const {data,error}=useGenericData<Genre>("/genres")
-  
-    const genres=data
+    // const {data:genres,error}=useGenericData<Genre>("/genres")
 
-  return { genres, error };
+     const { data: genres, error,isLoading } = useQuery<ListOfData<Genre>, Error>({
+       queryKey: ["genres"],
+       queryFn: () => clientApi.get<ListOfData<Genre>>("/genres").then((res)=>res.data)
+     });
+  
+
+  return { genres, error ,isLoading};
 }
 
 export default useGenres;

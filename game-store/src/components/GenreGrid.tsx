@@ -11,8 +11,8 @@ function GenreGrid({onHandlingClick,genreProp}:Props) {
 
   return (
     <div className="py-5 px-3 ">
-      {error && <h1>{error}</h1>}
-      {genres.map((genre) => (
+      {error && <h1>{error.message}</h1>}
+      {genres?.results.map((genre) => (
         <button
           type="button"
           onClick={() => onHandlingClick(genre)}

@@ -14,7 +14,7 @@ function PlatformDropDown({ onHandlingClick }: Props) {
   const { platforms, error } = usePlatforms();
   return (
     <>
-      {error && <h1>{error}</h1>}
+      {error && <h1>{error.message}</h1>}
       <div className="dropdown">
         <button
           className="btn btn-secondary dropdown-toggle"
@@ -26,7 +26,7 @@ function PlatformDropDown({ onHandlingClick }: Props) {
         </button>
 
         <ul className="dropdown-menu">
-          {platforms.map((platform) => (
+          {platforms?.results.map((platform) => (
             <li key={platform.id}>
               <button
                 type="button"

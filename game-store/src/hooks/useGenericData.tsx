@@ -2,7 +2,7 @@ import { AxiosRequestConfig, CanceledError } from "axios";
 import clientApi from "../services/client-api";
 import { useState, useEffect } from "react";
 
-interface ListOfData<Generic> {
+export interface ListOfData<Generic> {
   results: Generic[];
 }
 
