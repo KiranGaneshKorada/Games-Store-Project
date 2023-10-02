@@ -1,11 +1,12 @@
 import { useState } from "react";
+import useOrderBy from "../zustandStates/orderByState";
 
-interface Props {
-  onHandlingClick: (order: string) => void;
-}
 
-function OrderByDropdown({ onHandlingClick }: Props) {
+
+function OrderByDropdown() {
   const [showOrder, setShowOrder] = useState("");
+
+  const { setOrderByValue } = useOrderBy();
 
   const ordersArray = [
     { value: "", label: "Relevance" },
@@ -33,7 +34,7 @@ function OrderByDropdown({ onHandlingClick }: Props) {
               <button
                 type="button"
                 onClick={() => {
-                  onHandlingClick(order.value);
+                  setOrderByValue(order.value);
                   setShowOrder(order.label);
                 }}
                 className="dropdown-item"

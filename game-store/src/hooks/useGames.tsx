@@ -5,6 +5,7 @@ import ClientApi, { ListOfData } from "../services/client-api";
 import useSearch from "../zustandStates/searchState";
 import useGenreState from "../zustandStates/genreState";
 import usePlatformState from "../zustandStates/platformState";
+import useOrderBy from "../zustandStates/orderByState";
 
 export interface Game {
   id: number;
@@ -15,11 +16,13 @@ export interface Game {
 
 const apiObject = new ClientApi<Game>("games");
 
-function useGames(pageNo:number,page_size:number, ordering:string) {
+function useGames(pageNo:number,page_size:number) {
 
   const { searchWord } = useSearch();
   const {genreId}=useGenreState();
   const{platformId}=usePlatformState();
+    const { orderByValue } = useOrderBy();
+
 
 
   const { data: games, error } = useQuery<ListOfData<Game>, Error>({
@@ -29,7 +32,7 @@ function useGames(pageNo:number,page_size:number, ordering:string) {
       page_size,
       genreId,
       platformId,
-      ordering,
+      orderByValue,
       searchWord,
     ],
     queryFn: () =>
@@ -39,7 +42,7 @@ function useGames(pageNo:number,page_size:number, ordering:string) {
           page_size: page_size,
           genres: genreId,
           parent_platforms: platformId,
-          ordering: ordering,
+          ordering: orderByValue,
           search: searchWord,
         },
       }),

@@ -3,14 +3,12 @@ import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import { useState } from "react";
 
-interface Props {
-  ordering: string;
-}
 
-function GamesGrid({  ordering }: Props) {
+
+function GamesGrid() {
 
   const [pageNo,setPageNo]=useState(1)
-  const { games, error } = useGames(pageNo,8, ordering );
+  const { games, error } = useGames(pageNo,8 );
 
 
 

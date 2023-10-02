@@ -8,7 +8,7 @@ import OrderByDropdown from "./OrderByDropdown";
 
 function Mainbar() {
 
-  const [selectedOrder, setSelectedOrder] = useState<string>('');
+  
 
 
   return (
@@ -24,13 +24,12 @@ function Mainbar() {
           </div>
           <div className="my-4 mx-2">
             <OrderByDropdown
-              onHandlingClick={(order) => setSelectedOrder(order)}
+              
             />
           </div>
         </div>
 
         <GamesGrid
-          ordering={selectedOrder}
         />
       </div>
     </>
