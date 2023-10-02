@@ -1,13 +1,12 @@
-import useGenres, { Genre } from "../hooks/useGenres";
+import useGenres from "../hooks/useGenres";
 import imageResize from "../services/image-resize";
+import useGenreState from "../zustandStates/genreState";
 
-interface Props {
-  onHandlingClick: (genre: Genre) => void;
-  genreProp: Genre | null;
-}
 
-function GenreGrid({onHandlingClick,genreProp}:Props) {
+
+function GenreGrid() {
   const { genres, error } = useGenres();
+  const {genreId,onClickingOnGenre}=useGenreState();
 
   return (
     <div className="py-5 px-3 box-genres ">
@@ -15,9 +14,9 @@ function GenreGrid({onHandlingClick,genreProp}:Props) {
       {genres?.results.map((genre) => (
         <button
           type="button"
-          onClick={() => onHandlingClick(genre)}
+          onClick={() => onClickingOnGenre(genre.id)}
           className={
-            genre === genreProp
+            genre.id === genreId
               ? "btn btn-secondary my-1 active "
               : "btn btn-secondary my-1 "
           }

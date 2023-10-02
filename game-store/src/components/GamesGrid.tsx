@@ -1,20 +1,17 @@
 import { Button } from "react-bootstrap";
 import useGames from "../hooks/useGames";
-import { Genre } from "../hooks/useGenres";
 import { Platform } from "../hooks/usePlatforms";
 import GameCard from "./GameCard";
 import { useState } from "react";
 
 interface Props {
-  genre: Genre | null;
-  platform: Platform | null;
   ordering: string;
 }
 
-function GamesGrid({ genre, platform, ordering }: Props) {
+function GamesGrid({  ordering }: Props) {
 
   const [pageNo,setPageNo]=useState(1)
-  const { games, error } = useGames(pageNo,8,genre, platform, ordering );
+  const { games, error } = useGames(pageNo,8, ordering );
 
 
 

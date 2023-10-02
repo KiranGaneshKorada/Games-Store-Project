@@ -1,15 +1,16 @@
 import { useState } from "react";
-import usePlatforms, { Platform } from "../hooks/usePlatforms";
-
-interface Props{
-  onHandlingClick:(platform:Platform)=>void;
-}
+import usePlatforms from "../hooks/usePlatforms";
+import usePlatformState from "../zustandStates/platformState";
 
 
 
-function PlatformDropDown({ onHandlingClick }: Props) {
+
+
+function PlatformDropDown() {
 
   const [showPlatform, setShowPlatform] = useState("select platform");
+
+  const { onClickingOnPlatform } = usePlatformState();
 
   const { platforms, error } = usePlatforms();
   return (
@@ -31,7 +32,7 @@ function PlatformDropDown({ onHandlingClick }: Props) {
               <button
                 type="button"
                 onClick={() => {
-                  onHandlingClick(platform);
+                  onClickingOnPlatform(platform.id);
                   setShowPlatform(platform.name);
                 }}
                 className="dropdown-item"

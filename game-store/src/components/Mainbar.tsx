@@ -1,18 +1,13 @@
 import { useState } from "react";
-import { Genre } from "../hooks/useGenres";
 import GamesGrid from "./GamesGrid";
 import PlatformDropDown from "./PlatformDropDown";
-import { Platform } from "../hooks/usePlatforms";
 import OrderByDropdown from "./OrderByDropdown";
 
 
-interface Props {
-  genre: Genre | null;
-}
 
-function Mainbar({genre}:Props) {
 
-  const [selectedPlatform,setSelectedPlatform]=useState<Platform|null>(null)
+function Mainbar() {
+
   const [selectedOrder, setSelectedOrder] = useState<string>('');
 
 
@@ -24,8 +19,7 @@ function Mainbar({genre}:Props) {
       >
         <div className="d-flex flex-row">
           <div className="my-4 mx-2">
-            <PlatformDropDown
-              onHandlingClick={(platform) => setSelectedPlatform(platform)}
+            <PlatformDropDown    
             />
           </div>
           <div className="my-4 mx-2">
@@ -36,8 +30,6 @@ function Mainbar({genre}:Props) {
         </div>
 
         <GamesGrid
-          genre={genre}
-          platform={selectedPlatform}
           ordering={selectedOrder}
         />
       </div>

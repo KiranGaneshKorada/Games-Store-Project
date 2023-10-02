@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { Genre } from "./useGenres";
 import { Platform } from "./usePlatforms";
 
 import ClientApi, { ListOfData } from "../services/client-api";
 import useSearch from "../zustandStates/searchState";
+import useGenreState from "../zustandStates/genreState";
+import usePlatformState from "../zustandStates/platformState";
 
 export interface Game {
   id: number;
@@ -14,9 +15,11 @@ export interface Game {
 
 const apiObject = new ClientApi<Game>("games");
 
-function useGames(pageNo:number,page_size:number,genre: Genre | null, platform: Platform | null,ordering:string) {
+function useGames(pageNo:number,page_size:number, ordering:string) {
 
   const { searchWord } = useSearch();
+  const {genreId}=useGenreState();
+  const{platformId}=usePlatformState();
 
 
   const { data: games, error } = useQuery<ListOfData<Game>, Error>({
@@ -24,8 +27,8 @@ function useGames(pageNo:number,page_size:number,genre: Genre | null, platform: 
       "games",
       pageNo,
       page_size,
-      genre,
-      platform,
+      genreId,
+      platformId,
       ordering,
       searchWord,
     ],
@@ -34,16 +37,13 @@ function useGames(pageNo:number,page_size:number,genre: Genre | null, platform: 
         params: {
           page: pageNo,
           page_size: page_size,
-          genres: genre?.id,
-          parent_platforms: platform?.id,
+          genres: genreId,
+          parent_platforms: platformId,
           ordering: ordering,
           search: searchWord,
         },
       }),
   });
-
-
-
 
   return { games, error };
 }
