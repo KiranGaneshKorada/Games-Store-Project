@@ -1,12 +1,13 @@
 import { useRef } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import useSearch from "../zustandStates/searchState";
 
-interface Props {
-  onSubmission: (searchText: string) => void;
-}
 
-function SearchComponent({onSubmission}:Props) {
+
+function SearchComponent() {
     const ref=useRef<HTMLInputElement>(null);
+      const { setSearchWord } = useSearch();
+
   return (
     <>
       <Container className="my-2 ">
@@ -16,7 +17,7 @@ function SearchComponent({onSubmission}:Props) {
               className="d-flex container-fluid"
               onSubmit={(event) => {
                 event.preventDefault();
-                if (ref.current) onSubmission(ref.current.value)
+                if (ref.current) setSearchWord(ref.current.value);
               }}
             >
               <Form.Control

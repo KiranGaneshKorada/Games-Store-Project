@@ -9,16 +9,14 @@ interface Props {
   genre: Genre | null;
   platform: Platform | null;
   ordering: string;
-  searchData: string;
 }
 
-function GamesGrid({ genre, platform, ordering, searchData }: Props) {
-  const [pageNo,setPageNo]=useState(1)
-  const { games, error } = useGames(pageNo,8,genre, platform, ordering, searchData);
+function GamesGrid({ genre, platform, ordering }: Props) {
 
-  console.log(games?.count)
-  console.log(games?.next);
-  console.log(games?.previous);
+  const [pageNo,setPageNo]=useState(1)
+  const { games, error } = useGames(pageNo,8,genre, platform, ordering );
+
+
 
   return (
     <>
