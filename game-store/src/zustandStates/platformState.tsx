@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 interface PlatformStateInterface {
   platformId: number | null;
-  onClickingOnPlatform: (id: number) => void;
+  onClickingOnPlatform: (id: number|null) => void;
 }
 
 const usePlatformState = create<PlatformStateInterface>((setOrUpdateState) => ({

@@ -1,6 +1,5 @@
 import { Button } from "react-bootstrap";
 import useGames from "../hooks/useGames";
-import { Platform } from "../hooks/usePlatforms";
 import GameCard from "./GameCard";
 import { useState } from "react";
 
@@ -26,11 +25,11 @@ function GamesGrid({  ordering }: Props) {
           </div>
         ))}
       </div>
-      <Button disabled={!games?.next} onClick={()=>setPageNo(pageNo+1)} className="mx-2 my-4">
-        next
-      </Button>
       <Button disabled={!games?.previous} onClick={()=>setPageNo(pageNo-1)} className="mx-2 my-4">
         prev
+      </Button>
+      <Button disabled={!games?.next} onClick={()=>setPageNo(pageNo+1)} className="mx-2 my-4">
+        next
       </Button>
     </>
   );

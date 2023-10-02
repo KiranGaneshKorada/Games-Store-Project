@@ -27,6 +27,18 @@ function PlatformDropDown() {
         </button>
 
         <ul className="dropdown-menu dropdown-menu-platform">
+          <li key='none'>
+            <button
+              type="button"
+              onClick={() => {
+                onClickingOnPlatform(null);
+                setShowPlatform('all');
+              }}
+              className="dropdown-item"
+            >
+              All
+            </button>
+          </li>
           {platforms?.results.map((platform) => (
             <li key={platform.id}>
               <button
