@@ -8,13 +8,17 @@ import { useState } from "react";
 function GamesGrid() {
 
   const [pageNo,setPageNo]=useState(1)
-  const { games, error } = useGames(pageNo,8 );
+  const { games, error, isLoading} = useGames(pageNo,8 );
+
+
+       if (isLoading) return <>Loading....</>;
 
 
 
   return (
     <>
       {error && <h1>{error.message}</h1>}
+
 
       <div className="row mx-2 my-2 ">
         {games?.results.map((game) => (

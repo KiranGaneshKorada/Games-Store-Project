@@ -2,12 +2,14 @@ import { create } from "zustand";
 
 interface PlatformStateInterface {
   platformId: number | null;
-  onClickingOnPlatform: (id: number|null) => void;
+  platformName:string
+  onClickingOnPlatform: (id: number|null,name:string) => void;
 }
 
 const usePlatformState = create<PlatformStateInterface>((setOrUpdateState) => ({
   platformId: null,
-  onClickingOnPlatform: (id) => setOrUpdateState(() => ({ platformId: id })),
+  platformName:'All',
+  onClickingOnPlatform: (id,name) => setOrUpdateState(() => ({ platformId: id , platformName:name })),
 }));
 
 export default usePlatformState;

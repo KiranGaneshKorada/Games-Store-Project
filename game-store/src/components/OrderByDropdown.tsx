@@ -1,12 +1,10 @@
-import { useState } from "react";
 import useOrderBy from "../zustandStates/orderByState";
 
 
 
 function OrderByDropdown() {
-  const [showOrder, setShowOrder] = useState("");
 
-  const { setOrderByValue } = useOrderBy();
+  const { orderBylabel,setOrderByValue } = useOrderBy();
 
   const ordersArray = [
     { value: "", label: "Relevance" },
@@ -25,7 +23,7 @@ function OrderByDropdown() {
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
-          order by: {showOrder}
+          order by: {orderBylabel}
         </button>
 
         <ul className="dropdown-menu">
@@ -34,8 +32,7 @@ function OrderByDropdown() {
               <button
                 type="button"
                 onClick={() => {
-                  setOrderByValue(order.value);
-                  setShowOrder(order.label);
+                  setOrderByValue(order.value, order.label);
                 }}
                 className="dropdown-item"
               >

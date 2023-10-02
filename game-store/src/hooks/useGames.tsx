@@ -21,11 +21,11 @@ function useGames(pageNo:number,page_size:number) {
   const { searchWord } = useSearch();
   const {genreId}=useGenreState();
   const{platformId}=usePlatformState();
-    const { orderByValue } = useOrderBy();
+  const { orderByValue } = useOrderBy();
 
 
 
-  const { data: games, error } = useQuery<ListOfData<Game>, Error>({
+  const { data: games, error ,isLoading} = useQuery<ListOfData<Game>, Error>({
     queryKey: [
       "games",
       pageNo,
@@ -48,7 +48,7 @@ function useGames(pageNo:number,page_size:number) {
       }),
   });
 
-  return { games, error };
+  return { games, error, isLoading };
 }
 
 export default useGames;

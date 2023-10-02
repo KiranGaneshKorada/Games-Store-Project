@@ -1,4 +1,3 @@
-import { useState } from "react";
 import GamesGrid from "./GamesGrid";
 import PlatformDropDown from "./PlatformDropDown";
 import OrderByDropdown from "./OrderByDropdown";

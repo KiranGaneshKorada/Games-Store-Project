@@ -1,4 +1,3 @@
-import { useState } from "react";
 import usePlatforms from "../hooks/usePlatforms";
 import usePlatformState from "../zustandStates/platformState";
 
@@ -8,9 +7,8 @@ import usePlatformState from "../zustandStates/platformState";
 
 function PlatformDropDown() {
 
-  const [showPlatform, setShowPlatform] = useState("select platform");
 
-  const { onClickingOnPlatform } = usePlatformState();
+  const { platformName,onClickingOnPlatform } = usePlatformState();
 
   const { platforms, error } = usePlatforms();
   return (
@@ -23,16 +21,15 @@ function PlatformDropDown() {
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
-          {showPlatform}
+          Filter by Platform : {platformName}
         </button>
 
         <ul className="dropdown-menu dropdown-menu-platform">
-          <li key='none'>
+          <li key="none">
             <button
               type="button"
               onClick={() => {
-                onClickingOnPlatform(null);
-                setShowPlatform('all');
+                onClickingOnPlatform(null,'All');
               }}
               className="dropdown-item"
             >
@@ -44,8 +41,7 @@ function PlatformDropDown() {
               <button
                 type="button"
                 onClick={() => {
-                  onClickingOnPlatform(platform.id);
-                  setShowPlatform(platform.name);
+                  onClickingOnPlatform(platform.id,platform.name);
                 }}
                 className="dropdown-item"
               >

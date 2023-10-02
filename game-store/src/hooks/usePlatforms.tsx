@@ -13,7 +13,9 @@ const apiObject = new ClientApi<Platform>("/platforms/lists/parents");
 function usePlatforms() {
   const { data: platforms, error,isLoading } = useQuery<ListOfData<Platform>, Error>({
     queryKey: ["platforms"],
-    queryFn: apiObject.getData
+    queryFn: apiObject.getData,
+    staleTime:24*60*60*1000 //24hrs
+
   });
 
 

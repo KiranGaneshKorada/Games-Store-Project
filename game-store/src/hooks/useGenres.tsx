@@ -21,7 +21,9 @@ function useGenres() {
 
      const { data: genres, error,isLoading } = useQuery<ListOfData<Genre>, Error>({
        queryKey: ["genres"],
-       queryFn: apiObject.getData
+       queryFn: apiObject.getData,
+       staleTime:24*60*60*1000 //24hrs
+       
      });
   
 
