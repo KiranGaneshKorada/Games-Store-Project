@@ -1,4 +1,4 @@
-import MainComponent from "./components/MainComponent";
+import { Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar";
 
 
@@ -11,7 +11,7 @@ function MainApp() {
           <Navbar />
         </div>
         <div className="row my-0 mx-0 py-0 px-0">
-          <MainComponent  />
+          <Outlet  />
         </div>
       </div>
     </>
