@@ -1,12 +1,13 @@
 import { useParams } from "react-router-dom";
 import useGameDeatails from "../hooks/useGameDetails";
+import TextShowMoreLess from "./TextShow";
 
 
 function GameDetails(){
     const params=useParams()
     const{game,error,isLoading}=useGameDeatails(params.slug!);  
 
-    if (error||!game){
+    if (error){
         throw new Error("Data not found")
     }
     
@@ -26,7 +27,8 @@ function GameDetails(){
     return (
       <>
         <h1>{game?.name}</h1>
-        {game?.description_raw}
+
+        <TextShowMoreLess>{game?.description_raw}</TextShowMoreLess>
       </>
     );
 }
