@@ -4,7 +4,11 @@ import useGameDeatails from "../hooks/useGameDetails";
 
 function GameDetails(){
     const params=useParams()
-    const{game,error,isLoading}=useGameDeatails(params.slug);  
+    const{game,error,isLoading}=useGameDeatails(params.slug!);  
+
+    if (error||!game){
+        throw new Error("Data not found")
+    }
     
     if (isLoading)
     return (
@@ -16,9 +20,8 @@ function GameDetails(){
       </div>
     );
 
-    {
-      error && <h1>{error.message}</h1>;
-    }
+    
+
 
     return (
       <>
