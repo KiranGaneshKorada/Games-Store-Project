@@ -11,7 +11,14 @@ function GamesGrid() {
   const { games, error, isLoading} = useGames(pageNo,8 );
 
 
-       if (isLoading) return <>Loading....</>;
+       if (isLoading) return (
+         <>
+           <h5>Loading....</h5>
+           <div className="spinner-border" role="status">
+             <span className="visually-hidden">Loading...</span>
+           </div>
+         </>
+       );
 
 
 
