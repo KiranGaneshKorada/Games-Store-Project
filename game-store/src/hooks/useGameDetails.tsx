@@ -1,28 +1,27 @@
 import { useQuery } from "@tanstack/react-query";
-import { apiClient } from "../services/client-api";
-import { AxiosRequestConfig } from "axios";
-
+import ClientApi from "../services/client-api";
 
 export interface GameDetails {
   id: number;
   name: string;
   description_raw: string;
-  background_image:string
-  website:string
+  background_image: string;
+  website: string;
 }
 
-function useGameDeatails(slug:string|undefined){
-    const endPoint=`/games/${slug}`
-    const {
-      data: game,
-      error,
-      isLoading,
-    } = useQuery<GameDetails, Error>({
-      queryKey: ["gameDetails",slug],
-      queryFn: (filters: AxiosRequestConfig) =>
-        apiClient.get<GameDetails>(endPoint, filters).then((res) => res.data),
-    });
-return {game,error,isLoading}
+function useGameDeatails(slug: string | undefined) {
+  const endPoint = `/games/${slug}`;
+  const apiObject = new ClientApi<GameDetails>(endPoint);
+  const {
+    data: game,
+    error,
+    isLoading,
+  } = useQuery<GameDetails, Error>({
+    queryKey: ["gameDetails", slug],
+    queryFn: apiObject.getSingleData,
+    staleTime:60*60*1000 //1hr
+  });
+  return { game, error, isLoading };
 }
 
-export default useGameDeatails
+export default useGameDeatails;
