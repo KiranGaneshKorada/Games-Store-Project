@@ -14,22 +14,18 @@ function Mainbar() {
     <>
       <div
         className="bg-secondary col bg-opacity-50
-      my-0 mx-0 py-0 px-0  "
+      my-0 mx-0 py-0 px-0 box-games "
       >
         <div className="d-flex flex-row">
-          <div className="my-4 mx-2">
-            <PlatformDropDown    
-            />
+          <div className="my-4 mx-2 ms-3">
+            <PlatformDropDown />
           </div>
           <div className="my-4 mx-2">
-            <OrderByDropdown
-              
-            />
+            <OrderByDropdown />
           </div>
         </div>
 
-        <GamesGrid
-        />
+        <GamesGrid />
       </div>
     </>
   );

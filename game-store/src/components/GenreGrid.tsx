@@ -9,8 +9,9 @@ function GenreGrid() {
   const {genreId,onClickingOnGenre}=useGenreState();
 
   return (
-    <div className="py-5 px-3 box-genres ">
+    <div className="py-3 px-3 box-genres ">
       {error && <h1>{error.message}</h1>}
+      <h4 className="my-2">Genres</h4>
       {genres?.results.map((genre) => (
         <button
           type="button"

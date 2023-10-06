@@ -27,7 +27,9 @@ function GameDetails() {
       <h5>MetaScore:{game?.metacritic}</h5>
       <h5>Released:{game?.released}</h5>
       <h5>
-        <a href={game?.website}>Visit official website</a>
+        <a target="_blank" href={game?.website}>
+          Visit official website
+        </a>
       </h5>
       <h5>playtime:{game?.playtime} hrs</h5>
     </>
