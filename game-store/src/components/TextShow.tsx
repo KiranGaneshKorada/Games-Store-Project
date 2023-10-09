@@ -15,11 +15,11 @@ function TextShowMoreLess({children}:Props){
     if (children.length<=350){ return <p>{children}</p>;}
     else if (expanded){return (
       <>
-        <p>
+        <p className="text-break fs-6 fw-medium lh-sm">
           {children}{" "}
           <Button
             type="button"
-            className="btn btn-secondary"
+            className="btn btn-secondary px-1 py-1"
             onClick={() => setExpanded(!expanded)}
           >
             Show less
@@ -29,11 +29,11 @@ function TextShowMoreLess({children}:Props){
     );}
     else{return (
       <>
-        <p>
+        <p className="text-break fs-6 fw-medium lh-sm">
           {children.substring(0, 350) + "..."}{" "}
           <Button
             type="button"
-            className="btn btn-secondary"
+            className="btn btn-secondary  px-1 py-1 "
             onClick={() => setExpanded(!expanded)}
           >
             Show more

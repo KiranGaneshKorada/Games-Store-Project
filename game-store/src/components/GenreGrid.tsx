@@ -9,7 +9,7 @@ function GenreGrid() {
   const {genreId,onClickingOnGenre}=useGenreState();
 
   return (
-    <div className="py-3 px-3 box-genres ">
+    <div className="py-3 px-3 box-genres d-flex  flex-column">
       {error && <h1>{error.message}</h1>}
       <h4 className="my-2">Genres</h4>
       {genres?.results.map((genre) => (
@@ -23,16 +23,19 @@ function GenreGrid() {
           }
           key={genre.id}
         >
-          <div className="d-flex flex-row  justify-content-start ">
-            <div className="px-1 py-1">
+          <div className="d-flex flex-row container-fluid   ">
+            <div className="px-0 py-0 ">
               <img
+                height={50}
+                width={90}
                 src={imageResize(genre.image_background)}
-                className="object-fit-cover  rounded h-50 w-25"
-                alt="..."
+                className="object-fit-cover  rounded "
               ></img>
             </div>
-            <div className="pt-1">
-              <h6 className="text-dark">{genre.name}</h6>
+            <div className="pt-3 d-flex justify-content-center container-fluid">
+              <div>
+                <h6 className="text-dark text-bold">{genre.name}</h6>
+              </div>
             </div>
           </div>
         </button>
