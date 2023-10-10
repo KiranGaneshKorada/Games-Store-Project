@@ -1,7 +1,31 @@
+import useGamesVideo from "../hooks/useGamesVideo"
+import imageResize from "../services/image-resize";
+
+interface Props{
+    slug:string
+}
 
 
-function GamesVideo(){
-    return <div className="mx-0 my-0 px-0 py-0"></div>
+function GamesVideo({slug}:Props){
+    const { screenShots, error, isLoading } = useGamesVideo(slug,4);
+
+    if (error) {
+      throw new Error("Data not found");
+    }
+
+    if (isLoading)
+      return (
+        <div>
+          <h5>Loading....</h5>
+          <div className="spinner-border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      );
+
+    return <div className="container-fluid mx-0 my-0 px-0 py-0">
+        {screenShots?.results.map((image)=><img height={300} width={300} key={image.id} src={imageResize(image.image)}  className="img-fluid px-1 py-1" alt="..."/>)}
+    </div>
 }
 
 export default GamesVideo

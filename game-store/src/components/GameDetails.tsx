@@ -2,6 +2,8 @@ import { Link, useParams } from "react-router-dom";
 import useGameDeatails from "../hooks/useGameDetails";
 import TextShowMoreLess from "./TextShow";
 import useGameMedia from "../hooks/useGameMedia";
+import GamesVideo from "./GamesVideo";
+import imageResize from "../services/image-resize";
 
 function GameDetails() {
   const params = useParams();
@@ -12,7 +14,7 @@ function GameDetails() {
     isLoading: loading2,
   } = useGameMedia(params.slug!);
 
-      console.log(JSON.stringify(gameMedia,null,8));
+      // console.log(JSON.stringify(gameMedia,null,8));
 
 
   if (error1||error2) {
@@ -48,7 +50,7 @@ function GameDetails() {
                 <div className="col">
                   <img
                     height={220}
-                    src={game?.background_image}
+                    src={imageResize(game?.background_image!)}
                     className="img-fluid rounded-start"
                     alt="..."
                   />
@@ -107,7 +109,9 @@ function GameDetails() {
               </a>
             </h5>
           </div>
-          <div className="col"></div>
+          <div className="col">
+            <GamesVideo slug={params.slug!} />
+          </div>
         </div>
       </div>
     </>
