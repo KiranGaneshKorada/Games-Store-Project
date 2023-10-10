@@ -19,11 +19,11 @@ function GenreGrid() {
           className={
             genre.id === genreId
               ? "btn btn-secondary my-1 active "
-              : "btn btn-secondary my-1 "
+              : "btn bg-secondary bg-opacity-50 my-1 "
           }
           key={genre.id}
         >
-          <div className="d-flex flex-row container-fluid   ">
+          <div className="d-flex flex-row container-fluid  bg-opacity-50 ">
             <div className="px-0 py-0 ">
               <img
                 height={50}

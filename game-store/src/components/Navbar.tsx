@@ -6,7 +6,7 @@ import SearchComponent from "./SearchComponent";
 function Navbar() {
   return (
     <>
-      <div className="navbar sticky-Nav bg-secondary bg-opacity-25 my-0 mx-0 py-0 px-0">
+      <div className="navbar sticky-Nav bg-secondary bg-opacity-50 my-0 mx-0 py-0 px-0">
         <Link className="navbar-brand mx-5" to="/games">
           Game-Store
         </Link>

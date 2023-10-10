@@ -33,7 +33,7 @@ function GameDetails() {
 
   return (
     <>
-      <div className="container text-center my-2 px-2 pt-4 py-2 bg-secondary bg-opacity-25 box-col-1">
+      <div className="container text-center my-0 px-2 pt-4 py-2 bg-secondary bg-opacity-25 box-col-1">
         <div className="d-flex justify-content-start">
           <Link
             className="btn btn-secondary ms-3 mb-2 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"

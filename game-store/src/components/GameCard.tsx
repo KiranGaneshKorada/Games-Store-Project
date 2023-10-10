@@ -17,7 +17,7 @@ function GameCard({ game }: Props) {
           className="card-img-top  "
           alt={game.name}
         />
-        <div className="card-body bg-secondary bg-opacity-75">
+        <div className="card-body bg-secondary bg-opacity-50">
           <h6 className="card-title ">{game.name}</h6>
           <IconPlatform platforms={game.parent_platforms} />
         </div>
