@@ -15,7 +15,7 @@ function TextShowMoreLess({children}:Props){
     if (children.length<=350){ return <p>{children}</p>;}
     else if (expanded){return (
       <>
-        <p className="text-break fs-6 fw-medium lh-sm">
+        <p className="text-break fs-6 fw-medium lh-base">
           {children}{" "}
           <Button
             type="button"
@@ -29,7 +29,7 @@ function TextShowMoreLess({children}:Props){
     );}
     else{return (
       <>
-        <p className="text-break fs-6 fw-medium lh-sm">
+        <p className="text-break fs-6 fw-medium lh-base">
           {children.substring(0, 350) + "..."}{" "}
           <Button
             type="button"

@@ -8,7 +8,7 @@ import { useState } from "react";
 function GamesGrid() {
 
   const [pageNo,setPageNo]=useState(1)
-  const { games, error, isLoading} = useGames(pageNo,8 );
+  const { games, error, isLoading} = useGames(pageNo,12 );
 
 
        if (isLoading) return (

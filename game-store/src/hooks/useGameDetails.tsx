@@ -5,12 +5,10 @@ export interface GameDetails {
   id: number;
   name: string;
   description_raw: string;
-  metacritic:number
   released:string
   background_image: string;
   website: string;
   rating:number
-  playtime:number
 }
 
 function useGameDeatails(slug: string) {

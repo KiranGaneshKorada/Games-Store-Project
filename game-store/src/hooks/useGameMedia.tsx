@@ -1,12 +1,21 @@
 import { useQuery } from "@tanstack/react-query";
 import ClientApi from "../services/client-api";
+import { Platform } from "./usePlatforms";
 
 export interface GameMedia {
   id: number;
   name: string;
-  preview:string
-  data:{}
+  description_raw: string;
+  released: string;
+  background_image: string;
+  website: string;
+  rating: number;
+  parent_platforms:{platform:Platform}[];
+  genres:{id:number,name:string}[]
+  publishers:{name:string}[]
 }
+
+
 
 function useGameMedia(slug: string) {
   const endPoint = `/games/${slug}/movies`;
