@@ -1,27 +1,21 @@
 import { Link, useParams } from "react-router-dom";
 import useGameDeatails from "../hooks/useGameDetails";
 import TextShowMoreLess from "./TextShow";
-import useGameMedia from "../hooks/useGameMedia";
 import GamesVideo from "./GamesVideo";
 import imageResize from "../services/image-resize";
 
 function GameDetails() {
   const params = useParams();
-  const { game, error:error1, isLoading:loading1 } = useGameDeatails(params.slug!);
-  const {
-    gameMedia,
-    error: error2,
-    isLoading: loading2,
-  } = useGameMedia(params.slug!);
-
-      // console.log(JSON.stringify(gameMedia,null,8));
+  const { game, error, isLoading } = useGameDeatails(params.slug!);
 
 
-  if (error1||error2) {
+
+
+  if (error) {
     throw new Error("Data not found");
   }
 
-  if (loading2 || loading1)
+  if (isLoading)
     return (
       <div>
         <h5>Loading....</h5>
@@ -60,7 +54,7 @@ function GameDetails() {
                     <h4 className="card-title">{game?.name}</h4>
                     <p className="card-text">Rating : {game?.rating}</p>
                     <p className="card-text">
-                      Publishers : {gameMedia?.publishers[0].name}
+                      Publishers : {game?.publishers[0].name}
                     </p>
                     <p className="card-text">
                       <small className="text-body-secondary">
@@ -80,7 +74,7 @@ function GameDetails() {
                     Platforms
                   </div>
                   <ul className="list-group list-group-flush">
-                    {gameMedia?.parent_platforms.map(({ platform }) => (
+                    {game?.parent_platforms.map(({ platform }) => (
                       <li key={platform.id} className="list-group-item">
                         {platform.name}
                       </li>
@@ -94,7 +88,7 @@ function GameDetails() {
                     Genres
                   </div>
                   <ul className="list-group list-group-flush">
-                    {gameMedia?.genres.map((genre) => (
+                    {game?.genres.map((genre) => (
                       <li key={genre.id} className="list-group-item">
                         {genre.name}
                       </li>

@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import ClientApi from "../services/client-api";
+import { Platform } from "./usePlatforms";
 
 export interface GameDetails {
   id: number;
@@ -9,7 +10,12 @@ export interface GameDetails {
   background_image: string;
   website: string;
   rating:number
+  parent_platforms:{platform:Platform}[];
+  genres:{id:number,name:string}[]
+  publishers:{name:string}[]
 }
+
+
 
 function useGameDeatails(slug: string) {
   const endPoint = `/games/${slug}`;
