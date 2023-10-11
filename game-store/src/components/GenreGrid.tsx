@@ -2,11 +2,9 @@ import useGenres from "../hooks/useGenres";
 import imageResize from "../services/image-resize";
 import useGenreState from "../zustandStates/genreState";
 
-
-
 function GenreGrid() {
   const { genres, error } = useGenres();
-  const {genreId,onClickingOnGenre}=useGenreState();
+  const { genreId, onClickingOnGenre } = useGenreState();
 
   return (
     <div className="py-3 px-3 box-genres d-flex  flex-column">
@@ -15,7 +13,13 @@ function GenreGrid() {
       {genres?.results.map((genre) => (
         <button
           type="button"
-          onClick={() => onClickingOnGenre(genre.id)}
+          onClick={() => {
+            if (genre.id === genreId) {
+              onClickingOnGenre(null);
+            } else {
+              onClickingOnGenre(genre.id);
+            }
+          }}
           className={
             genre.id === genreId
               ? "btn btn-secondary my-1 active "
